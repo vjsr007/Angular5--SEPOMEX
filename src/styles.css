@@ -1,0 +1,21 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'assets/styles/variable.scss';
+@import 'assets/styles/header.scss';
+@import 'assets/styles/spinner.scss';
+@import 'assets/styles/app.scss';
+@import 'assets/styles/pages.scss';
+@import 'assets/styles/sidebar.scss';
+@import 'assets/styles/responsive.scss';
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/primeng.min.css';
+@import '~primeng/resources/themes/nova-light/theme.css';
+.mat-list-item {
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+.profile-text{
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
