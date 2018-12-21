@@ -1,31 +1,32 @@
 <p-scrollPanel [style]="{width: '100%', height: '100%'}">
     <p-panel header="Catálogo de Tacos">
         <div class="p-col">
-            <label>Name</label>
-            <input pInputText placeholder="Name" [(ngModel)]="name" name="name" id="name" type="text" size="30" />
+            <label>Nombre</label>
+            <input pInputText placeholder="Nombre" [(ngModel)]="name" name="name" id="name" type="text" size="30" />
 
-            <label>Description</label>
-            <input pInputText placeholder="Description" [(ngModel)]="description" name="description" type="text"/>
+            <label>Descripción</label>
+            <input pInputText placeholder="Descripción" [(ngModel)]="description" name="description" type="text"/>
         </div>
         <p-footer>
-            <button pButton type="button" icon="pi pi-plus" label="{{action}}" (click)="actionTaco()" class="first ui-button-secondary" ></button>
-            <button pButton type="button" icon="pi pi-search" label="Search" (click)="searchTaco()" class="first ui-button-secondary" ></button>
+            <button pButton type="button" icon="pi pi-plus" label="Agregar" routerLink="/tacos/agregar" class="first ui-button-primary" ></button>
+            <button pButton type="button" icon="pi pi-search" label="Buscar" (click)="searchTaco()" class="first ui-button-secondary" ></button>
         </p-footer>
     </p-panel>
+    <br>
     <p-table [value]="tipoDeTacos">
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 120px;"></th>
                 <th style="width: 120px;"></th>
                 <th style="width: 10%;">ID</th>
-                <th style="width: 30%;">Name</th>
-                <th style="width: 50%;">Description</th>
+                <th style="width: 30%;">Nombre</th>
+                <th style="width: 50%;">Descripción</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-taco>
             <tr>
-                <td><button pButton type="button" icon="pi pi-trash" label="Delete" (click)="deleteTaco(taco)" class="first ui-button-danger" ></button></td>
-                <td><button pButton type="button" icon="pi pi-pencil" label="Edit" (click)="editTaco(taco)" class="first ui-button-secondary" ></button></td>
+                <td><button pButton type="button" icon="pi pi-trash" label="Borrar" (click)="deleteTaco(taco)" class="first ui-button-danger" ></button></td>
+                <td><button pButton type="button" icon="pi pi-pencil" label="Editar" routerLink="/tacos/editar/{{taco.id}}" class="first ui-button-secondary" ></button></td>
                 <td>{{taco.id}}</td>
                 <td>{{taco.name}}</td>
                 <td>{{taco.description}}</td>

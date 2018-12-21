@@ -70,13 +70,13 @@ export class TacosComponent implements OnInit {
 
     public actionTaco() {
         if (this.action === 'Add') {
-            this.servicetacos.addTaco(this.name, this.description).subscribe(resolve => {
+            this.servicetacos.addTaco(new TipoTaco(0, this.name, this.description)).subscribe(resolve => {
                 this.name = '';
                 this.description = '';
                 this.tipoDeTacos =  resolve;
             });
         } else {
-            this.servicetacos.updateTaco(this.currentID, this.name, this.description).subscribe(
+            this.servicetacos.updateTaco(new TipoTaco(this.currentID, this.name, this.description)).subscribe(
                 resolve => {
                     this.currentID = null;
                     this.name = '';

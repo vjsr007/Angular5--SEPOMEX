@@ -25,6 +25,19 @@ export class TacosService {
         });
     }
 
+    public getTacosById(id: string): Observable<(TipoTaco)> {
+        return new Observable((observer) => {
+            this.http
+            .get(this.apiUrl + 'tacos/' + id, {responseType: 'json', withCredentials: true})
+            .subscribe(
+                (response: TipoTaco) => {
+                    observer.next(response);
+                },
+                error => observer.error(error)
+            );
+        });
+    }
+
     public getKeys(): Promise<(Array<string>)> {
         return new Promise((resolve, reject) => {
             this.http
@@ -83,10 +96,12 @@ export class TacosService {
         });
     }
 
-    public updateTaco(id: number, name: string, description: string): Observable<Array<TipoTaco>> {
+    public updateTaco(taco: TipoTaco): Observable<Array<TipoTaco>> {
         return new Observable((observer) => {
             this.http
-            .put(this.apiUrl + 'tacos/' + id, new TipoTaco(id, name, description), {responseType: 'json', withCredentials: true})
+            .put(this.apiUrl + 'tacos/' + taco.id,
+                new TipoTaco(taco.id, taco.name, taco.description),
+                {responseType: 'json', withCredentials: true})
             .subscribe(
                 (response: Array<TipoTaco>) => {
                     observer.next(response);
@@ -96,10 +111,10 @@ export class TacosService {
         });
     }
 
-    public addTaco(name: string, description: string): Observable<Array<TipoTaco>> {
+    public addTaco(taco: TipoTaco): Observable<Array<TipoTaco>> {
         return new Observable((observer) => {
             this.http
-            .post(this.apiUrl + 'tacos/', new TipoTaco(0, name, description), {responseType: 'json', withCredentials: true})
+            .post(this.apiUrl + 'tacos/', new TipoTaco(0, taco.name, taco.description), {responseType: 'json', withCredentials: true})
             .subscribe(
                 (response: Array<TipoTaco>) => {
                     observer.next(response);
